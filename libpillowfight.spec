@@ -1,9 +1,9 @@
 Name:           libpillowfight
-Version:        0.2.1
+Version:        0.2.2
 Release:        1%{?dist}
 Summary:        Small library containing various image processing algorithms
 
-License:        gplv2
+License:        GPLv2
 URL:            https://github.com/jflesch/%{name}
 Source0:        https://github.com/jflesch/%{name}/archive/%{version}/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 
@@ -25,22 +25,23 @@ are provided for every parameters.
 %package -n libpillowfight-devel
 Summary:        %{summary}
 BuildArch:      noarch
-Requires:	libpillowfight
+Requires:	libpillowfight = %{version}
 
 %description -n libpillowfight-devel
-%{description}
+Development files for using libpillowfight
 
 
 %package -n python3-pillowfight
 Summary:        %{summary}
+Requires:	libpillowfight = %{version}
 Requires:	python3-pillow
 
 %description -n python3-pillowfight
-%{description}
+Python3 bindings for libpillowfight
 
 
 %prep
-%setup -q
+%autosetup
 
 
 %build
@@ -78,6 +79,9 @@ find $RPM_BUILD_ROOT -type f
 
 
 %changelog
+* Sat Sep 23 2017 James Davidson <james@greycastle.net> - 0.2.2-1
+- Update to upstream release 0.2.2
+
 * Sat Nov 19 2016 James Davidson <james@greycastle.net> - 0.2.1-1
 - Initial packaging
 
